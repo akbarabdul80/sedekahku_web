@@ -11,10 +11,19 @@
 		<?php $this->load->view("admin/_partials/header.php") ?>
 	</header>
 
-	<?= var_dump( $masjid) ?>
-
 	<div class="container" style="padding: 25px 20px;">
-		<div class="alert alert-success" role="alert">Berhasil Menambahkan Dll. Pokoknya Alert :)</div>
+
+		<?php if ($this->session->flashdata('success')) : ?>
+			<div class="alert alert-success" role="alert">
+				<?php echo $this->session->flashdata('success'); ?>
+			</div>
+		<?php endif; ?>
+
+		<?php if ($this->session->flashdata('error')) : ?>
+			<div class="alert alert-warning" role="alert">
+				<?php echo $this->session->flashdata('error'); ?>
+			</div>
+		<?php endif; ?>
 
 		<!-- DataTables -->
 		<div class="card mb-3">
@@ -27,8 +36,9 @@
 					<table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
 						<thead>
 							<tr>
-								<th>Gambar</th>
+								<th>No</th>
 								<th>Nama Masjid</th>
+								<th>Gambar</th>
 								<th>Action</th>
 							</tr>
 						</thead>
@@ -37,15 +47,18 @@
 							foreach ($masjid as $mjd) : ?>
 								<tr>
 									<td width="150">
-										<?php echo $i;
-										$i++; ?>
+										<p><?php echo $i;
+											$i++; ?></p>
 									</td>
 									<td>
-										<?php echo $mjd->mosque_name ?>
+										<p><?php echo $mjd->mosque_name ?></p>
+									</td>
+									<td>
+										<img src="<?php echo base_url() . "upload/masjid/" . $mjd->mosque_img1 ?>" class="img-fluid" style="border-radius:3px; width: 100px;">
 									</td>
 									<td width="250">
-										<a href="<?php echo site_url('admin/kategori/edit/' . $mjd->id_mosude) ?>" class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
-										<a onclick="deleteConfirm('<?php echo site_url('admin/kategori/delete/' . $mjd->id_mosude) ?>')" href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
+										<a href="" data-toggle="modal" data-target="#modalEdit_<?= $mjd->id_mosque ?>" class="small shadow-sm text-muted" title="Edit" style="background-color: #fff; padding: 10px; font-size:14px; position: relative; border-radius: 5px;"><i class="fas fa-edit text-info"></i> Edit</a>
+										<a onclick="deleteConfirm('<?php echo site_url('admin/masjid/delete/' . $mjd->id_mosque, $mjd->id_mosque) ?>')" href="#" class="small shadow-sm text-muted" title="Hapus" style="background-color: #fff; padding: 10px; font-size:14px; position: relative; border-radius: 5px;"><i class="fas fa-trash text-danger"></i> Hapus</a>
 									</td>
 								</tr>
 							<?php endforeach; ?>
@@ -69,34 +82,24 @@
 				</div>
 				<div class="modal-body">
 					<div class="card-body">
-						<form action="" method="post" enctype="multipart/form-data">
+						<form action="<?= base_url('admin/masjid/add') ?>" method="post" enctype="multipart/form-data">
 							<div class="form-group">
 								<label for="nama_masjid">Nama Masjid*</label>
-								<input type="text" class="form-control" name="nama_masjid" placeholder="Nama Masjid" require />
+								<input type="text" class="form-control" name="mosque_name" placeholder="Nama Masjid" required />
 							</div>
 							<div class="form-group">
 								<label for="alamat_masjid">Alamat Masjid*</label>
-								<input type="text" class="form-control" name="alamat_masjid" placeholder="Alamat Masjid" require />
-							</div>
-							<div class="form-row">
-								<div class="col-lg-6 col-sm-6">
-									<label for="periode_masjid1">Periode Awal*</label>
-									<input type="date" class="form-control" name="periode_masjid1" require />
-								</div>
-								<div class="col-lg-6 col-sm-6">
-									<label for="periode_masjid2">Periode Akhir*</label>
-									<input type="date" class="form-control" name="periode_masjid2" require />
-								</div>
+								<input type="text" class="form-control" name="mosque_address" placeholder="Alamat Masjid" required />
 							</div>
 							<div class="form-group mt-3">
 								<label for="exampleFormControlFile1">Masukkan Gambar</label>
-								<input type="file" class="form-control-file" id="exampleFormControlFile1" require />
-								<input type="file" class="form-control-file mt-2" id="exampleFormControlFile1" />
-								<input type="file" class="form-control-file mt-2" id="exampleFormControlFile1" />
+								<input type="file" name="img_1" class="form-control-file" id="exampleFormControlFile1" required />
+								<input type="file" name="img_2" class="form-control-file mt-2" id="exampleFormControlFile1" />
+								<input type="file" name="img_3" class="form-control-file mt-2" id="exampleFormControlFile1" />
 							</div>
 							<div class="form-group">
 								<label>Keterangan</label>
-								<textarea class="form-control" rows="5"></textarea>
+								<textarea class="form-control" name="mosque_dec" rows="5" required></textarea>
 							</div>
 
 							<input class="btn btn-primary" style="background: #007bff" type="submit" name="btn" value="Posting" />
@@ -112,57 +115,77 @@
 		</div>
 	</div>
 
-	<div id="modalEdit" class="modal fade" role="dialog">
-		<div class="modal-dialog modal-dialog1 modal-lg">
 
-			<div class="modal-content modal-content1">
-				<div class="modal-header">
-					<a href="" style="background-color: #fff; padding: 10px; font-size:14px; position: relative; border-radius: 5px;" class="small shadow-sm text-muted" data-dismiss="modal"><i class="fa fa-angle-left"></i> Kembali</a>
-				</div>
-				<div class="modal-body">
-					<div class="card-body">
-						<form action="" method="post" enctype="multipart/form-data">
-							<div class="form-group">
-								<label for="nama_masjid">Nama Masjid*</label>
-								<input type="text" class="form-control" name="nama_masjid" placeholder="Nama Masjid" value="Masjid Agung Demak" require />
-							</div>
-							<div class="form-group">
-								<label for="alamat_masjid">Alamat Masjid*</label>
-								<input type="text" class="form-control" name="alamat_masjid" placeholder="Alamat Masjid" value="Jalan Sukowati no 11 Km. 1" require />
-							</div>
-							<div class="form-row">
-								<div class="col-lg-6 col-sm-6">
-									<label for="periode_masjid1">Periode Awal*</label>
-									<input type="date" class="form-control" name="periode_masjid1" require />
-								</div>
-								<div class="col-lg-6 col-sm-6">
-									<label for="periode_masjid2">Periode Akhir*</label>
-									<input type="date" class="form-control" name="periode_masjid2" require />
-								</div>
-							</div>
-							<div class="form-group mt-3">
-								<label for="exampleFormControlFile1">Masukkan Gambar</label>
-								<input type="file" class="form-control-file" id="exampleFormControlFile1" require />
-								<input type="file" class="form-control-file mt-2" id="exampleFormControlFile1" />
-								<input type="file" class="form-control-file mt-2" id="exampleFormControlFile1" />
-							</div>
-							<div class="form-group">
-								<label>Keterangan</label>
-								<textarea class="form-control" rows="5">SEDEKAHKU adalah aplikasi yang dibuat untuk memudahkan seseorang untuk memberi bantuan. Ini adalah contoh Keterangan Singkat</textarea>
-							</div>
+	<?php $i = 1;
+	foreach ($masjid as $mjd) : ?>
+		<div id="modalEdit_<?= $mjd->id_mosque ?>" class="modal fade" role="dialog">
+			<div class="modal-dialog modal-dialog1 modal-lg">
 
-							<input class="btn btn-success" style="background: #28a745" type="submit" name="btn" value="Simpan" />
-						</form>
+				<div class="modal-content modal-content1">
+					<div class="modal-header">
+						<a href="" style="background-color: #fff; padding: 10px; font-size:14px; position: relative; border-radius: 5px;" class="small shadow-sm text-muted" data-dismiss="modal"><i class="fa fa-angle-left"></i> Kembali</a>
 					</div>
+					<div class="modal-body">
+						<div class="card-body">
+							<form action="<?= base_url("admin/masjid/update") ?>" method="post" enctype="multipart/form-data">
 
-					<div class="card-footer small text-muted">
-						* Wajib Diisi
+								<input type="hidden" name="id_mosque" value="<?php echo $mjd->id_mosque ?>" />
+								<div class="form-group">
+									<label for="nama_masjid">Nama Masjid*</label>
+									<input type="text" class="form-control" name="mosque_name" placeholder="Nama Masjid" value="<?= $mjd->mosque_name ?>" require />
+								</div>
+								<div class="form-group">
+									<label for="alamat_masjid">Alamat Masjid*</label>
+									<input type="text" class="form-control" name="mosque_address" placeholder="Alamat Masjid" value="<?= $mjd->mosque_address ?>" require />
+								</div>
+								<div class="form-group mt-3">
+									<label for="exampleFormControlFile1">Masukkan Gambar</label>
+									<input type="file" name="img_1" class="form-control-file" id="exampleFormControlFile1" require />
+									<input type="file" name="img_2" class="form-control-file mt-2" id="exampleFormControlFile1" />
+									<input type="file" name="img_3" class="form-control-file mt-2" id="exampleFormControlFile1" />
+								</div>
+								<div class="form-group">
+									<label>Keterangan</label>
+									<textarea class="form-control" name="mosque_dec" rows="5"><?= $mjd->mosque_dec ?></textarea>
+								</div>
+
+								<input class="btn btn-success" style="background: #28a745" type="submit" name="btn" value="Simpan" />
+							</form>
+						</div>
+						<div class="card-footer small text-muted">
+							* Wajib Diisi
+						</div>
 					</div>
 				</div>
 			</div>
-
 		</div>
-	</div>
+
+
+
+		<!-- Delete Confirmation-->
+		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+						<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<p>Data yang dihapus tidak akan bisa dikembalikan.</p>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+						<a id="btn-delete_<?= $mjd->id_mosque ?>" class="btn btn-danger" href="<?= base_url('admin/masjid/delete/' . $mjd->id_mosque) ?>">Delete</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	<?php endforeach; ?>
+
+
+
 
 	<?php $this->load->view("admin/_partials/footer.php") ?>
 	<?php $this->load->view("admin/_partials/modal.php") ?>

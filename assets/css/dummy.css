@@ -64,7 +64,7 @@ p {
     font-size: 16px;
     font-weight: 500;
     line-height: 1.7;
-    color: #bdbac2;
+    color: #7b7b7b;
     margin-bottom: 0;
 }
 
@@ -116,7 +116,7 @@ p {
 
 .form-control {
     background: #f5f5f5;
-    color: #bdbac2;
+    color: #7b7b7b;
     border: none;
     font-size: 16px;
     font-weight: 500;
@@ -125,7 +125,7 @@ p {
 
 .form-control:focus {
     background: #f5f5f5;
-    color: #bdbac2;
+    color: #7b7b7b;
     border: none!important;
     box-shadow: none;
 }
@@ -133,7 +133,7 @@ p {
 .form-control::placeholder {
     font-size: 16px;
     font-weight: 500;
-    color: #bdbac2;
+    color: #7b7b7b;
 }
 
 .prepend {
@@ -418,7 +418,7 @@ p {
 }
 
 .navigation.dark .menu ul>li>a {
-    color: #bdbac2;
+    color: #7b7b7b;
 }
 
 .navigation.dark .menu ul>li>a:hover {
@@ -740,7 +740,7 @@ p {
     font-weight: 500;
     line-height: 1.7;
     text-align: center;
-    color: #bdbac2;
+    color: #7b7b7b;
     margin-top: 23px;
 }
 
@@ -855,7 +855,7 @@ p {
     font-size: 15px;
     font-weight: 500;
     line-height: 1;
-    color: #bdbac2;
+    color: #7b7b7b;
     margin-top: 7px;
 }
 
@@ -899,7 +899,7 @@ p {
 .pricing .nav li a {
     display: block;
     padding: 10px 0;
-    color: #bdbac2;
+    color: #7b7b7b;
     border-radius: 6px;
 }
 
@@ -960,7 +960,7 @@ p {
 }
 
 .pricing .item ul>li {
-    color: #bdbac2;
+    color: #7b7b7b;
     font-weight: 500;
 }
 
@@ -1021,7 +1021,7 @@ thead th {
 tbody th {
     padding: 24px 30px;
     font-weight: 500;
-    color: #bdbac2;
+    color: #7b7b7b;
 }
 
 
@@ -1130,7 +1130,7 @@ tbody th {
     font-size: 15px;
     font-weight: 500;
     margin-top: 7px;
-    color: #bdbac2;
+    color: #7b7b7b;
 }
 
 .domains .results .item .tag {
@@ -1145,7 +1145,7 @@ tbody th {
     font-weight: 600;
     line-height: 1;
     text-transform: uppercase;
-    color: #bdbac2;
+    color: #7b7b7b;
     border-radius: 3px;
 }
 
@@ -1165,7 +1165,7 @@ tbody th {
     display: block;
     font-size: 15px;
     font-weight: 500;
-    color: #bdbac2;
+    color: #7b7b7b;
     margin-top: 7px;
 }
 
@@ -1180,7 +1180,7 @@ tbody th {
 
 .domains .results .item .primary.added {
     background: #f5f5f5;
-    color: #bdbac2;
+    color: #7b7b7b;
 }
 
 
@@ -1224,7 +1224,7 @@ tbody th {
     width: 24px;
     height: 24px;
     stroke-width: 2.5;
-    color: #bdbac2;
+    color: #7b7b7b;
 }
 
 
@@ -1281,7 +1281,7 @@ tbody th {
     display: block;
     font-size: 14px;
     font-weight: 500;
-    color: #bdbac2;
+    color: #7b7b7b;
     margin-top: 3px;
 }
 
@@ -1320,7 +1320,7 @@ tbody th {
 
 .server-status .item ul>li {
     font-weight: 500;
-    color: #bdbac2;
+    color: #7b7b7b;
 }
 
 
@@ -1458,7 +1458,7 @@ tbody th {
     display: block;
     font-weight: 500;
     line-height: 1;
-    color: #bdbac2;
+    color: #7b7b7b;
     margin-bottom: 26px;
 }
 
@@ -1475,8 +1475,8 @@ tbody th {
 .team .item .feather {
     width: 16px;
     height: 16px;
-    fill: #bdbac2;
-    color: #bdbac2;
+    fill: #7b7b7b;
+    color: #7b7b7b;
 }
 
 
@@ -1654,7 +1654,7 @@ tbody th {
     font-weight: 500;
     line-height: 1.2;
     word-break: break-all;
-    color: #bdbac2;
+    color: #7b7b7b;
 }
 
 .cart ul>li>span {
@@ -1684,7 +1684,7 @@ tbody th {
 }
 
 .cart .form-control::placeholder {
-    color: #bdbac2;
+    color: #7b7b7b;
 }
 
 .cart form .primary {
@@ -1757,7 +1757,7 @@ tbody th {
 
 .departments .item ul>li {
     font-weight: 500;
-    color: #bdbac2;
+    color: #7b7b7b;
 }
 
 
@@ -1806,7 +1806,7 @@ tbody th {
     padding: 24px;
     background: #fff;
     font-weight: 500;
-    color: #bdbac2;
+    color: #7b7b7b;
     text-align: center;
     border-radius: 6px;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.03);
@@ -1898,7 +1898,7 @@ tbody th {
 .form .item span {
     display: block;
     font-weight: 500;
-    color: #bdbac2;
+    color: #7b7b7b;
     margin-top: 23px;
 }
 
@@ -1926,7 +1926,7 @@ tbody th {
     width: 20px;
     height: 20px;
     stroke-width: 2.5;
-    color: #bdbac2;
+    color: #7b7b7b;
 }
 
 .form .item .form-group {
@@ -2005,7 +2005,7 @@ tbody th {
     max-width: 500px;
     font-size: 32px;
     line-height: 1.5;
-    color: #bdbac2;
+    color: #7b7b7b;
     margin: 0 auto;
 }
 
@@ -2045,7 +2045,7 @@ tbody th {
     text-align: center;
     font-size: 16px;
     font-weight: 500;
-    color: #bdbac2;
+    color: #7b7b7b;
 }
 
 .footer .round+.round {
@@ -2055,8 +2055,8 @@ tbody th {
 .footer .feather {
     width: 20px;
     height: 20px;
-    fill: #bdbac2;
-    color: #bdbac2;
+    fill: #7b7b7b;
+    color: #7b7b7b;
 }
 
 .footer ul {
@@ -2074,7 +2074,7 @@ tbody th {
 }
 
 .footer ul>li>a {
-    color: #bdbac2;
+    color: #7b7b7b;
 }
 
 .footer ul>li>a:hover {
@@ -2107,7 +2107,7 @@ tbody th {
 
 .footer .copyright ul>li>a {
     display: block;
-    color: #bdbac2;
+    color: #7b7b7b;
 }
 
 .footer .copyright ul>li>a:hover {

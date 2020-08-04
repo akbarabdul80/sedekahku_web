@@ -38,3 +38,52 @@
 		</div>
 	</div>
 </footer>
+
+<script src="<?= base_url() ?>assets/js/vendor/jquery/jquery.min.js"></script>
+<script src="<?= base_url() ?>assets/js/vendor/popper.min.js"></script>
+<script src="<?= base_url() ?>assets/js/vendor/feather.min.js"></script>
+<script src="<?= base_url() ?>assets/js/vendor/bootstrap.min.js"></script>
+<script src="<?= base_url() ?>assets/js/dummy.min.js"></script>
+<script src="<?= base_url() ?>assets/js/main.js"></script>
+
+<script src="<?= base_url() ?>assets/vendor/swiper/js/swiper.min.js"></script>
+
+<script>
+	var swiperH = new Swiper('.swiper-container-h', {
+		spaceBetween: 50,
+		pagination: {
+			el: '.swiper-pagination-h',
+			clickable: true,
+		},
+
+		navigation: {
+			nextEl: '.swiper-button-next',
+			prevEl: '.swiper-button-prev',
+		},
+	});
+</script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('[data-toggle="tooltip"]').tooltip();
+	});
+</script>
+
+<!-- Page level plugins -->
+<script src="<?php echo base_url(); ?>assets/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+		$('#dataTable').DataTable();
+	});
+</script>
+
+
+<script>
+	function deleteConfirm(url, id) {
+		$('#btn-delete_'+id).attr('href', url);
+		console.log(url);
+		$('#deleteModal').modal();
+	}
+</script>

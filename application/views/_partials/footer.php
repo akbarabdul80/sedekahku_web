@@ -54,11 +54,10 @@
 
 <script>
 	$(window).scroll(function() {
-		if ($(this).scrollTop() > 200){  
+		if ($(this).scrollTop() > 200) {
 			$('header').addClass("sticky-top");
 			$('nav').addClass("slide-down");
-		}
-		else if ($(this).scrollTop() < 200){  
+		} else if ($(this).scrollTop() < 200) {
 			$('header').removeClass("sticky-top");
 			$('nav').removeClass("slide-down");
 		}
@@ -67,56 +66,54 @@
 	$(".vertical-center").slick({
 		dots: true,
 		vertical: false,
-		autoplay : true
+		autoplay: true
 	});
 
 	$(".regular").slick({
 
-			  // normal options...
-			  infinite: false,
+		// normal options...
+		infinite: false,
 
-			  // the magic
-			  responsive: [{
+		// the magic
+		responsive: [{
 
-			  	breakpoint: 2000,
-			  	settings: {
-			  		slidesToShow: 3,
-			  		slidesToScroll: 1,
-			  		infinite: true,
-			  		centerMode : true,
-			  		dots:true
-			  	}
+			breakpoint: 2000,
+			settings: {
+				slidesToShow: 3,
+				slidesToScroll: 1,
+				infinite: true,
+				centerMode: true,
+				dots: true
+			}
 
-			  }, {
+		}, {
 
-			  	breakpoint: 720,
-			  	settings: {
-			  		slidesToShow: 1,
-			  		dots: true
-			  	}
+			breakpoint: 720,
+			settings: {
+				slidesToShow: 1,
+				dots: true
+			}
 
-			  }, {
+		}, {
 
-			  	breakpoint: 300,
-			      settings: "unslick" // destroys slick
+			breakpoint: 300,
+			settings: "unslick" // destroys slick
 
-			  }]
-			});
+		}]
+	});
+</script>
 
-		</script>
+<script>
+	var swiperH = new Swiper('.swiper-container-h', {
+		spaceBetween: 50,
+		pagination: {
+			el: '.swiper-pagination-h',
+			clickable: true,
+		},
 
-		<script>
-			var swiperH = new Swiper('.swiper-container-h', {
-				spaceBetween: 50,
-				pagination: {
-					el: '.swiper-pagination-h',
-					clickable: true,
-				},
-
-				navigation: {
-					nextEl: '.swiper-button-next',
-					prevEl: '.swiper-button-prev',
-				},
-			});
-
-		</script>
+		navigation: {
+			nextEl: '.swiper-button-next',
+			prevEl: '.swiper-button-prev',
+		},
+	});
+</script>
